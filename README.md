@@ -14,6 +14,8 @@ Nossa função de exemplo realiza um cálculo de área multiplicando base vezes 
     }
 ```
 
+## Criando o arquivo de teste
+
 Ao clicar com o botão o botão direito sobre o nome da função e selecione "Generate..." ou digite *alt+insert*.
 
 ![Menu Botão Direito](/img/tela1.png)
@@ -33,7 +35,7 @@ Na janela Choose Destination Directory você define a pasta onde será salvo a c
 ```Kotlin
 internal class GeoFormTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     fun calculateArea() {
     }
 }
@@ -42,4 +44,47 @@ internal class GeoFormTest {
 Caso não tenha as referência ao JUnit incluida utilizando a *lâmpada vermelha*.
 
 ![Add reference menu](/img/tela4.png)
+
+## Classes e funções de teste
+
+As *funções* de teste devem ter o atributo **@Test** e a *classe* precisa apontar para qual ferramenta de testes deve ser usada com ao atributo **@RunWith**.
+
+```Kotlin
+
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+
+@RunWith(JUnit4::class)
+internal class ObjectTest{
+   @Test
+    fun calculateAreaIsValid(){
+    }   
+}
+```
+
+No método de teste você pode declarar parâmetros e salvar o retorno do seu método em uma variável. Este resultado você compara com o resultado esperado utilizando assertTrue()
+
+```Kotlin
+    @Test
+    fun calculateAreaIsValid(){
+        val height = 2.0
+        val witdh = 2.0
+        val result = ObjForm.calculateArea(height,witdh)
+        assertTrue(result.equals(4.0))
+    }
+```    
+
+
+## Rodando o teste
+
+Para rodar o teste clique no simobolo play verde ao lado da declaração do método de teste. Você pode executar todos os teste da classe clicando no botão da classe ou executar testes inidividualmente na declaração de cada uma das funções de teste.
+
+![Botões de play na lateal](img/tela6.png)
+
+
+## Resultado do teste
+
+Veja o resultado o teste no painel *Event Log*:
+
+![Event log](img/tela5.png)
 
